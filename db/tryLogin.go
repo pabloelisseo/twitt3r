@@ -1,4 +1,4 @@
-package bd
+package db
 
 import (
 	"github.com/pabloelisseo/twitt3r/models"

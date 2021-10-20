@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/pabloelisseo/twitt3r/bd"
+	"github.com/pabloelisseo/twitt3r/db"
 	"github.com/pabloelisseo/twitt3r/models"
 )
 
@@ -23,7 +23,7 @@ func RecordTweet(w http.ResponseWriter, r *http.Request) {
 		CreatedAt: time.Now(),
 	}
 
-	_, status, err := bd.InsertTweet(tweet)
+	_, status, err := db.InsertTweet(tweet)
 	if err != nil {
 		http.Error(w, "There was an error trying to insert the tweet. Try again"+err.Error(), 400)
 		return

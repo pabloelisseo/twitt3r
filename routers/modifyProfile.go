@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/pabloelisseo/twitt3r/bd"
+	"github.com/pabloelisseo/twitt3r/db"
 	"github.com/pabloelisseo/twitt3r/models"
 )
 
@@ -17,7 +17,7 @@ func ModifyProfile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	status, err := bd.ModifySignUp(t, UserID)
+	status, err := db.ModifySignUp(t, UserID)
 	if err != nil {
 		http.Error(w, "There was an error trying to modify the profile. Try again "+err.Error(), 400)
 		return

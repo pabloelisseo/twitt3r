@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/pabloelisseo/twitt3r/bd"
+	"github.com/pabloelisseo/twitt3r/db"
 	"github.com/pabloelisseo/twitt3r/models"
 )
 
@@ -27,7 +27,7 @@ func ProcessToken(token string) (*models.Claim, bool, string, error) {
 		return myKey, nil
 	})
 	if err == nil {
-		_, found, _ := bd.CheckUserExists(claims.Email)
+		_, found, _ := db.CheckUserExists(claims.Email)
 		if found {
 			Email = claims.Email
 			UserID = claims.ID.Hex()

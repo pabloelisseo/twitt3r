@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/pabloelisseo/twitt3r/bd"
+	"github.com/pabloelisseo/twitt3r/db"
 	"github.com/pabloelisseo/twitt3r/jwt"
 	"github.com/pabloelisseo/twitt3r/models"
 )
@@ -21,7 +21,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	if len(t.Email) == 0 {
 		http.Error(w, "User email required "+err.Error(), 400)
 	}
-	user, exists := bd.TryLogin(t.Email, t.Password)
+	user, exists := db.TryLogin(t.Email, t.Password)
 	if !exists {
 		http.Error(w, "Incorrect email or password ", 400)
 		return

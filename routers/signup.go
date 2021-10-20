@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/pabloelisseo/twitt3r/bd"
+	"github.com/pabloelisseo/twitt3r/db"
 	"github.com/pabloelisseo/twitt3r/models"
 )
 
@@ -26,13 +26,13 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, userExists, _ := bd.CheckUserExists(u.Email)
+	_, userExists, _ := db.CheckUserExists(u.Email)
 	if userExists {
 		http.Error(w, "Error: Email already signed up", 400)
 		return
 	}
 
-	_, status, err := bd.InsertSignUp(u)
+	_, status, err := db.InsertSignUp(u)
 	if err != nil {
 		http.Error(w, "Error: There was a problem inserting data from user into database"+err.Error(), 500)
 		return

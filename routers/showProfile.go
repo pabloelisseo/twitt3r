@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/pabloelisseo/twitt3r/bd"
+	"github.com/pabloelisseo/twitt3r/db"
 )
 
 func ShowProfile(w http.ResponseWriter, r *http.Request) {
@@ -14,7 +14,7 @@ func ShowProfile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	profile, err := bd.FindProfile(ID)
+	profile, err := db.FindProfile(ID)
 	if err != nil {
 		http.Error(w, "Cannot find user profile"+err.Error(), 400)
 		return
