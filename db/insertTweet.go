@@ -16,8 +16,10 @@ func InsertTweet(t models.RecordTweet) (string, bool, error) {
 	db := MongoClient.Database("twitt3r")
 	col := db.Collection("tweets")
 
+	userObjId, _ := primitive.ObjectIDFromHex(t.UserId)
+
 	tweet := bson.M{
-		"userId":    t.UserId,
+		"userId":    userObjId,
 		"message":   t.Message,
 		"createdAt": t.CreatedAt,
 	}
