@@ -30,7 +30,7 @@ func ModifySignUp(u models.User, ID string) (bool, error) {
 		signUp["email"] = u.Email
 	}
 	if len(u.Avatar) > 0 {
-		signUp["avatar"] = u.Name
+		signUp["avatar"] = u.Avatar
 	}
 	if len(u.Banner) > 0 {
 		signUp["banner"] = u.Banner

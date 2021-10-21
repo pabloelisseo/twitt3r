@@ -14,6 +14,9 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+# User images
+uploads/avatars/*
+uploads/banners/*
 
 .vscode
 .env
